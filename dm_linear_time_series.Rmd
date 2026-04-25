@@ -1,0 +1,11 @@
+---
+title: "LaborMarketAndOrigin_Henry_Reynaud"
+output:
+  pdf_document: default
+  html_document: default
+date: "2026-05-10"
+---
+
+# Linear time series 2 : Applied Project: Gross industrial production index (2021) - Pharmaceutical industry
+
+
