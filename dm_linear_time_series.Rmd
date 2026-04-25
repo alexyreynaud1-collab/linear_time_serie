@@ -8,4 +8,33 @@ date: "2026-05-10"
 
 # Linear time series 2 : Applied Project: Gross industrial production index (2021) - Pharmaceutical industry
 
+```{r load-data}
+data_raw <- read.csv("valeurs_mensuelles.csv", 
+                     sep = ";",
+                     header = TRUE,
+                     stringsAsFactors = FALSE)
 
+head(data_raw)
+```
+```{r load-and-plot}
+# Chargement en sautant les 4 lignes d'en-tête INSEE
+data_raw <- read.csv("valeurs_mensuelles.csv",
+                     sep = ";", header = FALSE, skip = 4,
+                     stringsAsFactors = FALSE)
+
+# Renommer les colonnes
+colnames(data_raw) <- c("date", "ipi", "code")
+
+# Convertir les colonnes
+data_raw$date <- as.Date(paste0(data_raw$date, "-01"))  # "2026-02" -> "2026-02-01"
+data_raw$ipi  <- as.numeric(data_raw$ipi)
+
+# Trier par ordre chronologique
+data_raw <- data_raw[order(data_raw$date), ]
+
+# Graphique
+plot(data_raw$date, data_raw$ipi,
+     type = "l", col = "steelblue", lwd = 1.5,
+     main = "IPI - Industrie pharmaceutique (base 100 en 2021)",
+     xlab = "Date", ylab = "Indice brut")
+```
