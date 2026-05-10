@@ -210,7 +210,6 @@ legend("topright",
 #T+1 and T+2 predictions
 library(lmtest)
 
-path  <- "valeurs_mensuelles.csv"
 data  <- read.csv2(path)
 data  <- data[data$Codes == "A", ]
 colnames(data) <- c("date", "index", "Codes")
